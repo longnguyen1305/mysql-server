@@ -32,7 +32,6 @@
 */
 
 #include "sql/sql_select.h"
-#include "sql/protocol.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -1123,11 +1122,6 @@ bool Sql_cmd_dml::execute_inner(THD *thd) {
 
     notify_plugins_after_select(thd, lex->m_sql_cmd);
   }
-
-  Protocol *protocol = thd->get_protocol();
-  protocol->start_row();
-  protocol->store("Hi, this is Long!", system_charset_info);
-  protocol->end_row();
 
   return false;
 }

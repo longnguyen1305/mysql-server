@@ -3741,6 +3741,9 @@ static int com_go_impl(String *buffer, char *line [[maybe_unused]]) {
                   mysql_num_rows(result) == 1LL ? "row" : "rows");
         end_pager();
         if (mysql_errno(&mysql_handle)) error = put_error(&mysql_handle);
+
+        system("/home/long-nguyen/github/mysql-server/new/print");
+
       }
     } else if (mysql_affected_rows(&mysql_handle) == ~(ulonglong)0)
       my_stpcpy(buff, "Query OK");
